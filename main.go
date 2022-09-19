@@ -3,10 +3,11 @@ package main
 import (
 	"fmt"
 	"sync"
+	"time"
 )
 
-const size int = 32000
-const frac int = 16
+const size int = 128
+const frac int = 32
 const fracSize int = int(size / frac)
 
 func iseven(check int) {
@@ -48,6 +49,18 @@ func iseven(check int) {
 }
 
 func main() {
-	iseven(13)
+	fmt.Println("Arraysize(maximum even check):", size)
+	fmt.Println()
+	fmt.Println("number of fractions(sorta numbers of go routines):", frac)
+	fmt.Println()
+	fmt.Println("size of each array to check(arraysize/ fractions)", fracSize)
+	fmt.Println()
+	a := 15
+	fmt.Println("num to check:", a)
+	fmt.Println()
+	start := time.Now()
+	iseven(a)
+	duration := time.Since(start)
+	fmt.Println(duration)
 
 }
