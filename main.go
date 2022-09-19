@@ -64,3 +64,15 @@ func main() {
 	fmt.Println(duration)
 
 }
+
+//example output with ryzen 5 5700u
+// Arraysize(maximum even check): 128
+
+// number of fractions(sorta numbers of go routines): 32
+
+// size of each array to check(arraysize/ fractions) 4
+
+// num to check: 15
+
+// 15 is not even
+// 9.501672439s
