@@ -6,12 +6,12 @@ import (
 	"time"
 )
 
-const size int = 128
 const frac int = 32
-const fracSize int = int(size / frac)
 
-func iseven(check int) {
-	var array [size]int
+func iseven(check int, arrSize int) {
+	size := arrSize
+	fracSize := int(size / frac)
+	var array = make([]int, size)
 	var wg sync.WaitGroup
 	wg.Add(frac)
 	for i := 0; i < size; i++ {
@@ -40,7 +40,29 @@ func iseven(check int) {
 		}(i)
 	}
 	wg.Wait()
-	if array[check] != 0 {
+	var hmm bool = false
+	/*rand.Shuffle(len(array), func(i1, j1 int) { array[i1], array[j1] = array[j1], array[i1] })
+	for x := 0; x < size; x++ {
+		if array[x] == check {
+			hmm = true
+			break
+		}
+	}
+	*/
+	if array[check] == check {
+		hmm = true
+	}
+	fmt.Println("even table")
+	fmt.Println("number | even/odd")
+	for q := 0; q < size; q++ {
+		if array[q] == q {
+			println(q, "    | even")
+		} else {
+			println(q, "    | odd")
+		}
+	}
+	fmt.Println()
+	if hmm == true {
 		fmt.Println(check, "is even")
 	} else {
 		fmt.Println(check, "is not even")
@@ -49,20 +71,26 @@ func iseven(check int) {
 }
 
 func main() {
-	fmt.Println("Arraysize(maximum even check):", size)
-	fmt.Println()
-	fmt.Println("number of fractions(sorta numbers of go routines):", frac)
-	fmt.Println()
-	fmt.Println("size of each array to check(arraysize/ fractions)", fracSize)
-	fmt.Println()
-	a := 15
+	a := 31
+	b := 100
 	fmt.Println("num to check:", a)
 	fmt.Println()
+	//test multiple array sizes
+	/*for i := 1; i < 10; i++ {
+		fmt.Println("computing with array size:", b*i)
+		start := time.Now()
+		iseven(a, b*i)
+		duration := time.Since(start)
+		fmt.Print("\ntime to complete:")
+		fmt.Println(duration)
+	}
+	*/
+	fmt.Println("computing with array size:", b)
 	start := time.Now()
-	iseven(a)
+	iseven(a, b)
 	duration := time.Since(start)
+	fmt.Print("\ntime to complete:")
 	fmt.Println(duration)
-
 }
 
 //example output with ryzen 5 5700u
