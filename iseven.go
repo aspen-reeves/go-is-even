@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"sync"
 	"time"
 )
@@ -57,15 +58,15 @@ func iseven(check int, arrSize int) {
 }
 
 func main() {
-	a := 64
+	a := 50
 	b := a * 2
 	fmt.Println("num to check:", a)
 	fmt.Println()
 	fmt.Println("computing with array size:", b)
-	start := time.Now()		
-	
+	start := time.Now()
+
 	iseven(a, b)
-	
+
 	duration := time.Since(start)
 	fmt.Print("\ntime to complete:")
 	fmt.Println(duration)
@@ -84,7 +85,6 @@ func main() {
 // 15 is not even
 // 9.501672439s
 
-
 //test code blocks to put in main
 /*
 fmt.Print("\nusing modulo\n")
@@ -97,4 +97,4 @@ fmt.Print("\nusing modulo\n")
 	duration := time.Since(start)
 	fmt.Print("\ntime to complete:")
 	fmt.Println(duration)
-	*/
+*/
