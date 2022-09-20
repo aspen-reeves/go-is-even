@@ -53,7 +53,7 @@ func isEven(check int) bool {
 }
 
 func main() {
-	a := 51
+	a := 51 // change this number to test
 	fmt.Println("num to check:", a)
 	start := time.Now()
 
