@@ -52,7 +52,7 @@ func iseven(check int, arrSize int) {
 	if array[check] == check {
 		hmm = true
 	}
-	fmt.Println("even table")
+	/*fmt.Println("even table")
 	fmt.Println("number | even/odd")
 	for q := 0; q < size; q++ {
 		if array[q] == q {
@@ -61,7 +61,8 @@ func iseven(check int, arrSize int) {
 			println(q, "    | odd")
 		}
 	}
-	fmt.Println()
+	*/
+	//fmt.Println()
 	if hmm == true {
 		fmt.Println(check, "is even")
 	} else {
@@ -71,8 +72,8 @@ func iseven(check int, arrSize int) {
 }
 
 func main() {
-	a := 31
-	b := 100
+	a := 64
+	b := a * 2
 	fmt.Println("num to check:", a)
 	fmt.Println()
 	//test multiple array sizes
@@ -86,8 +87,22 @@ func main() {
 	}
 	*/
 	fmt.Println("computing with array size:", b)
+	for {
+		fmt.Println("my is-even function:")
+		start := time.Now()
+		iseven(a, b)
+		duration := time.Since(start)
+		fmt.Print("\ntime to complete:")
+		fmt.Println(duration)
+		break
+	}
+	fmt.Print("\nusing modulo\n")
 	start := time.Now()
-	iseven(a, b)
+	if a%2 == 0 {
+		fmt.Println(a, "is even")
+	} else {
+		fmt.Println(a, "is not even")
+	}
 	duration := time.Since(start)
 	fmt.Print("\ntime to complete:")
 	fmt.Println(duration)
