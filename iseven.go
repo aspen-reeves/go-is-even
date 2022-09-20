@@ -62,12 +62,13 @@ func main() {
 	fmt.Println("num to check:", a)
 	fmt.Println()
 	fmt.Println("computing with array size:", b)
-		fmt.Println("my is-even function:")
-		start := time.Now()
-		iseven(a, b)
-		duration := time.Since(start)
-		fmt.Print("\ntime to complete:")
-		fmt.Println(duration)
+	start := time.Now()		
+	
+	iseven(a, b)
+	
+	duration := time.Since(start)
+	fmt.Print("\ntime to complete:")
+	fmt.Println(duration)
 
 }
 
