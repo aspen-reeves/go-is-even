@@ -66,6 +66,7 @@ func main() {
 	duration := time.Since(start)
 	fmt.Print("\ntime to complete:")
 	fmt.Println(duration)
+	/*                           //uncomment this for proper algo
 	fmt.Println("properly done")
 	start = time.Now()
 
@@ -78,6 +79,7 @@ func main() {
 	duration = time.Since(start)
 	fmt.Print("\ntime to complete:")
 	fmt.Println(duration)
+	*/
 
 }
 
