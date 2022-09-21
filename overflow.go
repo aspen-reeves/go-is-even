@@ -25,6 +25,7 @@ func isEven(check int) bool {
 			for j := (fracSize * i1); j < (fracSize*i1 + fracSize); j++ {
 				var a uint32 = uint32(j) // convert the index to a uint32
 				for {
+
 					a += 2      // add 2 to the number
 					if a == 0 { // if the number overflows to 0, then it is even
 						break
@@ -53,11 +54,12 @@ func isEven(check int) bool {
 }
 
 func main() {
-	a := 51 // change this number to test
+	a := 10 // change this number to test
 	fmt.Println("num to check:", a)
+	//fmt.Scan(&a)
 	start := time.Now()
 
-	if isEven(a) {
+	if isItActuallyEven(a) {
 		fmt.Println("is even")
 	} else {
 		fmt.Println("is odd")
@@ -66,7 +68,7 @@ func main() {
 	duration := time.Since(start)
 	fmt.Print("\ntime to complete:")
 	fmt.Println(duration)
-	/*                           //uncomment this for proper algo
+	/*                           //uncomment this for prozper algo
 	fmt.Println("properly done")
 	start = time.Now()
 
