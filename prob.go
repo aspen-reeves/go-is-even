@@ -9,14 +9,14 @@ import (
 func isEvenNew(check int) bool {
 	temp := check
 	even, odd := 0, 0
-	for i := 0; i < check*100; i++ {
+	for i := 0; i < check*100; i++ { //generates check*100 random numbers. if ratio between even/odd is x/x it is even, x/x+1 if odd
 		rand.Seed((time.Now().UnixNano()))
-		randInt := rand.Intn(temp)
-		if randInt%2 == 0 {
-			even++
+		randInt := rand.Intn(temp) // generate random
+		if randInt%2 == 0 {        // checks if random num is even or odd
+			even++ //iterates even counter if even
 
 		} else {
-			odd++
+			odd++ // iterates odd counter if odd
 		}
 	}
 	if (float64(even) / float64(odd)) > 1 {
@@ -56,37 +56,39 @@ func isItActuallyEven(check int) bool {
 	}
 
 }
-func isEvenRecursive(check int, even int, odd int, confidence float64) bool { // unfinished
+func isEvenRecursive(check int, confidence float64) bool { // unfinished
 	temp := check
+	even, odd := 0, 0
 	for i := 0; i < check*100; i++ {
 		rand.Seed((time.Now().UnixNano()))
-		randInt := rand.Intn(temp)
+		randInt := rand.Intn(temp) + 1 //generate random numbers from 1:
 		if randInt%2 == 0 {
 			even++
 
-		} else {
+		} else if randInt%2 == 1 {
 			odd++
 		}
 	}
 	oddRatio := float64(check/2) / float64((check/2)+1) // ideal ratio if the number is odd
-	evenRatio := 1.0
+	evenRatio := 1.0                                    // ideal ratio if number is even
 
-	trueRatio := float64(even) / float64(odd)
+	trueRatio := float64(even) / float64(odd) // calcuates the true ratio of even/odd
+	//fmt.Println(trueRatio, oddRatio, evenRatio)
 
-	oddDiff := math.Abs(float64(oddRatio - trueRatio))
-	evenDiff := math.Abs(float64(evenRatio - trueRatio))
+	oddDiff := math.Abs(float64(oddRatio - trueRatio))   // difference between ideal and true ratios(odd)
+	evenDiff := math.Abs(float64(evenRatio - trueRatio)) // difference between ideal and true ratios(even)
 
-	if oddDiff < evenDiff {
+	if oddDiff < evenDiff { // if the odd diff is higher, check how close
 		if trueRatio < oddRatio+(oddRatio*confidence) && trueRatio > oddRatio-(oddRatio*confidence) {
 			return false
 		} else {
-			return isEvenRecursive(check, even, odd, confidence)
+			return isEvenRecursive(check, confidence) // recursive if it is too far off ideal
 		}
 	} else {
 		if trueRatio < evenRatio+(evenRatio*confidence) && trueRatio > evenRatio-(evenRatio*confidence) {
 			return true
 		} else {
-			return isEvenRecursive(check, even, odd, confidence)
+			return isEvenRecursive(check, confidence)
 		}
 	}
 

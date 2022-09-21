@@ -59,7 +59,7 @@ func main() {
 	//start := time.Now()
 	for a := 100; a < 200; a++ {
 
-		if isItActuallyEven(a) {
+		if isEvenRecursive(a, 0.0001) {
 			fmt.Println(a, " is even")
 		} else {
 			fmt.Println(a, " is odd")
