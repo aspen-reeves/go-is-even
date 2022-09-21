@@ -1,14 +1,12 @@
 package main
 
 import (
-	"fmt"
 	"math/rand"
 	"sync"
 )
 
-const frac int = 32
-
 func isEven(check int) bool {
+	const frac int = 32
 	size := check * 2             // size of the array
 	fracSize := int(size / frac)  // size of each fraction
 	var array = make([]int, size) // array to hold the numbers
@@ -51,63 +49,3 @@ func isEven(check int) bool {
 	return hmm // return the result
 
 }
-
-func main() {
-	//a := 101 // change this number to test
-	//fmt.Println("num to check:", a)
-	//fmt.Scan(&a)
-	//start := time.Now()
-	for a := 100; a < 200; a++ {
-
-		if isEvenRecursive(a, 0.0001) {
-			fmt.Println(a, " is even")
-		} else {
-			fmt.Println(a, " is odd")
-		}
-	}
-
-	//duration := time.Since(start)
-	//fmt.Print("\ntime to complete:")
-	//fmt.Println(duration)
-	/*                           //uncomment this for prozper algo
-	fmt.Println("properly done")
-	start = time.Now()
-
-	if isEvenNew(a) {
-		fmt.Println("is even")
-	} else {
-		fmt.Println("is odd")
-	}
-
-	duration = time.Since(start)
-	fmt.Print("\ntime to complete:")
-	fmt.Println(duration)
-	*/
-
-}
-
-//example output with ryzen 5 5700u
-// Arraysize(maximum even check): 128
-
-// number of fractions(sorta numbers of go routines): 32
-
-// size of each array to check(arraysize/ fractions) 4
-
-// num to check: 15
-
-// 15 is not even
-// 9.501672439s
-
-//test code blocks to put in main
-/*
-fmt.Print("\nusing modulo\n")
-	start := time.Now()
-	if a%2 == 0 {
-		fmt.Println(a, "is even")
-	} else {
-		fmt.Println(a, "is not even")
-	}
-	duration := time.Since(start)
-	fmt.Print("\ntime to complete:")
-	fmt.Println(duration)
-*/
