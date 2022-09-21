@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"math/rand"
 	"sync"
-	"time"
 )
 
 const frac int = 32
@@ -54,20 +53,22 @@ func isEven(check int) bool {
 }
 
 func main() {
-	a := 10 // change this number to test
-	fmt.Println("num to check:", a)
+	//a := 101 // change this number to test
+	//fmt.Println("num to check:", a)
 	//fmt.Scan(&a)
-	start := time.Now()
+	//start := time.Now()
+	for a := 1; a < 100; a++ {
 
-	if isItActuallyEven(a) {
-		fmt.Println("is even")
-	} else {
-		fmt.Println("is odd")
+		if isEvenRecursive(a) {
+			fmt.Println(a, " is even")
+		} else {
+			fmt.Println(a, " is odd")
+		}
 	}
 
-	duration := time.Since(start)
-	fmt.Print("\ntime to complete:")
-	fmt.Println(duration)
+	//duration := time.Since(start)
+	//fmt.Print("\ntime to complete:")
+	//fmt.Println(duration)
 	/*                           //uncomment this for prozper algo
 	fmt.Println("properly done")
 	start = time.Now()
