@@ -56,9 +56,8 @@ func isItActuallyEven(check int) bool {
 	}
 
 }
-func isEvenRecursive(check int) bool {
+func isEvenRecursive(check int, even int, odd int, confidence float64) bool { // unfinished
 	temp := check
-	even, odd := 0, 0
 	for i := 0; i < check*100; i++ {
 		rand.Seed((time.Now().UnixNano()))
 		randInt := rand.Intn(temp)
@@ -69,8 +68,26 @@ func isEvenRecursive(check int) bool {
 			odd++
 		}
 	}
-	idealRatio := float64(check/2) / float64((check/2)+1)
+	oddRatio := float64(check/2) / float64((check/2)+1) // ideal ratio if the number is odd
+	evenRatio := 1.0
+
 	trueRatio := float64(even) / float64(odd)
-	diff := math.Abs(float64(idealRatio - trueRatio))
+
+	oddDiff := math.Abs(float64(oddRatio - trueRatio))
+	evenDiff := math.Abs(float64(evenRatio - trueRatio))
+
+	if oddDiff < evenDiff {
+		if trueRatio < oddRatio+(oddRatio*confidence) && trueRatio > oddRatio-(oddRatio*confidence) {
+			return false
+		} else {
+			return isEvenRecursive(check, even, odd, confidence)
+		}
+	} else {
+		if trueRatio < evenRatio+(evenRatio*confidence) && trueRatio > evenRatio-(evenRatio*confidence) {
+			return true
+		} else {
+			return isEvenRecursive(check, even, odd, confidence)
+		}
+	}
 
 }
