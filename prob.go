@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func isEvenNew(check int) bool {
+func isEvenProb(check int) bool {
 	temp := check
 	even, odd := 0, 0
 	for i := 0; i < check*100; i++ { //generates check*100 random numbers. if ratio between even/odd is x/x it is even, x/x+1 if odd
@@ -30,7 +30,7 @@ func isItActuallyEven(check int) bool {
 	oddProb := 0
 	conf := 1.3
 	for j := 0; j < 10; j++ {
-		if isEvenNew(check) {
+		if isEvenProb(check) {
 			evenProb++
 		} else {
 			oddProb++
@@ -41,7 +41,7 @@ func isItActuallyEven(check int) bool {
 			break
 		} else {
 			for j := 0; j < 10; j++ {
-				if isEvenNew(check) {
+				if isEvenProb(check) {
 					evenProb++
 				} else {
 					oddProb++
@@ -56,7 +56,13 @@ func isItActuallyEven(check int) bool {
 	}
 
 }
-func isEvenRecursive(check int, confidence float64) bool { // unfinished
+func isEvenRecursive(check int, confidenceA ...float64) bool {
+	var confidence float64
+	if len(confidenceA) == 0 {
+		confidence = 0.0001
+	} else {
+		confidence = confidenceA[0]
+	}
 	temp := check
 	even, odd := 0, 0
 	for i := 0; i < check*100; i++ {

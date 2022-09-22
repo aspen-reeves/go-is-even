@@ -5,7 +5,7 @@ import (
 	"sync"
 )
 
-func isEven(check int) bool {
+func isEvenOverflow(check int) bool {
 	const frac int = 32
 	size := check * 2             // size of the array
 	fracSize := int(size / frac)  // size of each fraction
