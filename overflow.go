@@ -49,3 +49,23 @@ func isEvenOverflow(check int) bool {
 	return hmm // return the result
 
 }
+
+func bitshiftEven(check int) bool {
+	var check1 uint32 = uint32(check) // convert the number to a uint32
+	check1 = check1 << 31             // shift the number 31 bits to the left
+	check1 = check1 >> 31             // shift the number 31 bits to the right
+	if check1 == 0 {                  // if the number is 0, then it is even
+		return true
+	} else {
+		return false
+	}
+}
+
+func bitEven(check int) bool {
+	var check1 uint32 = uint32(check)
+	if check1 < (1 << 31) {
+		check1 = check1 << 1
+		bitEven(int(check1))
+	}
+	return true
+}

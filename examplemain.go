@@ -6,6 +6,32 @@ import (
 )
 
 func main() {
+	//use bitwise even meathod
+	start := time.Now()
+	num := 1000000000001
+	check := (num&1 == 0) //bitWiseEven(num)
+	duration := time.Since(start)
+
+	fmt.Println("Time taken:", duration)
+	if check {
+		fmt.Println("even")
+	} else {
+		fmt.Println("odd")
+	}
+	start = time.Now()
+	check = (num%2 == 0)
+	duration = time.Since(start)
+
+	fmt.Println("Time taken:", duration)
+	if check {
+		fmt.Println("even")
+	} else {
+		fmt.Println("odd")
+	}
+}
+
+/*
+func main() {
 	fmt.Println("Welcome to the even number checker!")
 	fmt.Print("Use custom logic? (y/n)")
 	var custom string
